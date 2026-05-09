@@ -1,0 +1,248 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --primary: #3D2B1F;
+  --primary-foreground: #FDF8F3;
+  --accent: #C5A059;
+  --accent-foreground: #FFFFFF;
+  --secondary: #FDF8F3;
+  --secondary-foreground: #3D2B1F;
+  --sidebar-primary: #3D2B1F;
+  --sidebar-primary-foreground: #FDF8F3;
+  --chart-1: #C5A059;
+  --chart-2: #3D2B1F;
+  --chart-3: #8B7355;
+  --chart-4: #D4AF37;
+  --chart-5: #A0826D;
+  --radius: 0.65rem;
+  --background: #FDF8F3;
+  --foreground: #3D2B1F;
+  --card: #FFFFFF;
+  --card-foreground: #3D2B1F;
+  --popover: #FFFFFF;
+  --popover-foreground: #3D2B1F;
+  --muted: #F5F1ED;
+  --muted-foreground: #8B7355;
+  --border: #E8E2DB;
+  --input: #F5F1ED;
+  --ring: #C5A059;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #3D2B1F;
+  --sidebar-accent: #F5F1ED;
+  --sidebar-accent-foreground: #3D2B1F;
+  --sidebar-border: #E8E2DB;
+  --sidebar-ring: #C5A059;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  /* Typography System */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+    font-family: "Cormorant Garamond", serif;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight;
+    font-family: "Cormorant Garamond", serif;
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl font-semibold;
+    font-family: "Cormorant Garamond", serif;
+    line-height: 1.2;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold;
+    font-family: "Cormorant Garamond", serif;
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+@layer components {
+  /* Full-Bleed Container */
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply backdrop-blur-md bg-white/20 border border-white/30 rounded-2xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-card-dark {
+    @apply backdrop-blur-md bg-black/20 border border-white/10 rounded-2xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Premium Button */
+  .btn-luxury {
+    @apply px-8 py-4 rounded-full font-semibold transition-all duration-300;
+    background: linear-gradient(135deg, #C5A059 0%, #D4AF37 100%);
+    color: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+  }
+
+  .btn-luxury:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+  }
+
+  /* Soft Shadow */
+  .shadow-soft {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-soft-lg {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Glow Effect */
+  .glow-accent {
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+  }
+
+  .glow-accent-lg {
+    box-shadow: 0 0 40px rgba(197, 160, 89, 0.5);
+  }
+
+  /* Smooth Transition */
+  .transition-smooth {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Text Gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, #C5A059 0%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Floating Animation */
+  @keyframes floating {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  /* Shimmer Effect */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Blur Reveal */
+  @keyframes blurReveal {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  .blur-reveal {
+    animation: blurReveal 0.8s ease-out;
+  }
+}
